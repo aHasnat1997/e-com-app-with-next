@@ -30,7 +30,7 @@ export default function TopNav(): JSX.Element {
     },
     {
       title: 'Shop',
-      path: '/'
+      path: '/shop'
     },
     {
       title: 'About',
