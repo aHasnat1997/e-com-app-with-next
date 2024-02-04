@@ -121,7 +121,7 @@ export default function TopNav(): JSX.Element {
             }
           </ul>
           <div>
-            <Link href='/'>
+            <Link href='/login'>
               <Button variant={'secondary'}>Login</Button>
             </Link>
           </div>
