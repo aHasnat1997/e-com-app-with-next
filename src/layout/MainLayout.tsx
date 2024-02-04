@@ -20,9 +20,13 @@ export default function MainLayout({
 
   return (
     <>
-      <TopNav />
+      {
+        pathname === '/login' ? <></> : <TopNav />
+      }
       {children}
-      <Footer />
+      {
+        pathname === '/login' ? <></> : <Footer />
+      }
     </>
   )
 }
