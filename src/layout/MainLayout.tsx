@@ -4,8 +4,13 @@ import Footer from "@/components/Footer/Footer";
 import TopNav from "@/components/TopNave/TopNave";
 import { usePathname } from "next/navigation";
 
+/**
+ * Main layout of app
+ * @param children render children 
+ * @returns MainLayout JXS
+ */
 export default function MainLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
