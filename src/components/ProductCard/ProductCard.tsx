@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { FaPlus, FaEye, FaRegHeart } from "react-icons/fa";
+import Link from "next/link";
 
 /**
  * Product card component
@@ -9,8 +10,8 @@ import { FaPlus, FaEye, FaRegHeart } from "react-icons/fa";
  * @param currentPrice product price
  * @returns {JSX.Element} ProductCard
  */
-export default function ProductCard({ imgSrc, title, currentPrice }:
-  { imgSrc: string, title: string, currentPrice: number }): JSX.Element {
+export default function ProductCard({ id = '0000', imgSrc, title, currentPrice }:
+  { id: string, imgSrc: string, title: string, currentPrice: number }): JSX.Element {
   return (
     <div className="w-fit shadow-2xl rounded-sm p-8 group">
       <div className="w-full relative overflow-hidden">
@@ -22,7 +23,9 @@ export default function ProductCard({ imgSrc, title, currentPrice }:
           className="duration-300 group-hover:scale-105"
         />
         <div className="flex flex-col gap-4 absolute top-0 -right-36 duration-300 group-hover:right-0">
-          <Button variant={'outline'} className="text-2xl duration-300 hover:bg-secondary"><FaEye /></Button>
+          <Link href={`/product/${id}`}>
+            <Button variant={'outline'} className="text-2xl duration-300 hover:bg-secondary"><FaEye /></Button>
+          </Link>
           <Button variant={'outline'} className="text-2xl duration-300 hover:bg-secondary"><FaRegHeart /></Button>
         </div>
       </div>

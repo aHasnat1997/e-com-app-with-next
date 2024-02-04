@@ -71,6 +71,7 @@ export default function TopProducts(): JSX.Element {
             imgSrc={item.productImg}
             title={item.title}
             currentPrice={item.price}
+            id={item.id}
           />)
         }
       </div>

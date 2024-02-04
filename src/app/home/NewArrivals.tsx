@@ -66,6 +66,7 @@ export default function NewArrivals() {
             imgSrc={item.productImg}
             title={item.title}
             currentPrice={item.price}
+            id={item.id}
           />)
         }
       </div>
