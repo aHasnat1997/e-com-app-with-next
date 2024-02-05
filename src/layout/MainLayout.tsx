@@ -22,7 +22,7 @@ export default function MainLayout({
       }
       {children}
       {
-        pathname === '/login' ? <></> : <Footer />
+        pathname === '/login' || pathname.startsWith('/dashboard') ? <></> : <Footer />
       }
     </>
   )

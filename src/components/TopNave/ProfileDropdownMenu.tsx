@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { FaRegUser } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ProfileDropdownMenu() {
   return (
@@ -38,8 +39,10 @@ export default function ProfileDropdownMenu() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <BarChart3 className="mr-2 h-4 w-4" />
-            <span>Dashboard</span>
+            <Link href='/dashboard' className="w-full flex items-center">
+              <BarChart3 className="mr-2 h-4 w-4" />
+              <span>Dashboard</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
