@@ -1,6 +1,6 @@
 'use client';
 
-import { BarChart3, Package, ShoppingCart } from "lucide-react";
+import { BarChart3, Package, ShoppingCart, UsersRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
@@ -28,11 +28,16 @@ export default function DashboardNav() {
       title: 'View Order',
       icon: <ShoppingCart />,
       path: '/dashboard/view-order'
+    },
+    {
+      title: 'View User',
+      icon: <UsersRound />,
+      path: '/dashboard/view-user'
     }
-  ]
+  ];
 
   return (
-    <nav className="p-2 shadow-[5px_0px_10px_rgba(0,0,0,0.3)] rounded-xl">
+    <nav className="h-[72vh] p-2 shadow-[3px_1px_10px_rgba(0,0,0,0.3)] rounded-xl">
       {
         navLink.map(item => <div
           key={item.title}
