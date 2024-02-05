@@ -1,6 +1,8 @@
+"use client"
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,42 +13,36 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
+const phoneRegex = new RegExp(
+  /^\+8801[3456789]\d{8}$/
+);
 const formSchema = z.object({
-  email: z.string().min(1, {
-    message: "Email is empty",
-  }).email('Input valid email'),
+  phone: z.string().regex(phoneRegex, 'Invalid Number! follow this +8801XXXXXXXX'),
   password: z.string().min(8, {
-    message: "Password must 8",
-  }),
-});
+    message: "Must be at least 8 characters.",
+  })
+})
 
 export default function LoginFrom() {
-  // const { toast } = useToast();
-
-  // 1. Define form.
+  const router = useRouter()
+  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: ""
+      phone: '',
+      password: ''
     },
   })
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      console.log(values);
-    } catch (error) {
-      console.log(error);
-      // toast({
-      //   title: 'Error',
-      //   description: 'An error occurred during login. Please try again.',
-      //   duration: 2000,
-      // });
-    }
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values)
+    router.push('/')
   }
 
   return (
@@ -57,14 +53,14 @@ export default function LoginFrom() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="email"
+              name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Email</FormLabel>
+                  <FormLabel className="text-white">Phone No.</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jon Do" {...field} />
+                    <Input placeholder="Only BD Number (+8801XXXXXXXX)" {...field} className="w-full" />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-900" />
                 </FormItem>
               )}
             />
@@ -75,9 +71,9 @@ export default function LoginFrom() {
                 <FormItem>
                   <FormLabel className="text-white">Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="***************" {...field} />
+                    <Input type="password" placeholder="***************" {...field} className="w-full" />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-900" />
                 </FormItem>
               )}
             />
@@ -94,9 +90,9 @@ export default function LoginFrom() {
       </div>
       <div className="w-full">
         <h2 className="text-white text-center mt-8">
-          <span>Do not Have an account?</span>
+          Do not Have an account?
           <Link
-            href='/register'
+            href='/login'
             className="underline ml-2"
           >
             Register
