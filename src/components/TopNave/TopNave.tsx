@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { FaRegUser, FaRegHeart, FaBars } from "react-icons/fa";
-import { LuShoppingBasket } from "react-icons/lu";
+import { FaRegHeart, FaBars } from "react-icons/fa";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import {
@@ -15,6 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ProfileDropdownMenu from "./ProfileDropdownMenu";
+import CartDropdownMenu from "./CartDropdownMenu";
 
 /**
  * Top Nav of the clint
@@ -85,8 +86,8 @@ export default function TopNav(): JSX.Element {
         </div>
         <div className="text-3xl flex items-center gap-6">
           <FaRegHeart className="cursor-pointer" />
-          <LuShoppingBasket className="cursor-pointer" />
-          <FaRegUser className="cursor-pointer" />
+          <CartDropdownMenu />
+          <ProfileDropdownMenu />
         </div>
       </div>
 

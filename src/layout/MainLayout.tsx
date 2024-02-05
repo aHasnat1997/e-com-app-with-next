@@ -15,9 +15,6 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  console.log(pathname);
-
-
   return (
     <>
       {
