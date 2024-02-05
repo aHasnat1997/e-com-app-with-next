@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useAddProductMutation } from "@/redux/services/products/productApi";
+// import { useAddProductMutation } from "@/redux/services/products/productApi";
 
 const formSchema = z.object({
   productName: z.string().min(1, {
@@ -38,7 +38,7 @@ const formSchema = z.object({
 })
 
 export default function AddProduct() {
-  const [addProduct] = useAddProductMutation();
+  // const [addProduct] = useAddProductMutation();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,15 +53,11 @@ export default function AddProduct() {
   })
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
-    try {
-      const result = await addProduct(values);
-    } catch (error) {
-      console.log(error);
-    }
+
   }
 
   return (
