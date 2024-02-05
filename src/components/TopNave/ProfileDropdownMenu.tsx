@@ -1,3 +1,4 @@
+"use client";
 import {
   CreditCard,
   LogOut,
@@ -25,8 +26,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ProfileDropdownMenu() {
+  const router = useRouter()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
@@ -38,11 +41,9 @@ export default function ProfileDropdownMenu() {
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href='/dashboard' className="w-full flex items-center">
-              <BarChart3 className="mr-2 h-4 w-4" />
-              <span>Dashboard</span>
-            </Link>
+          <DropdownMenuItem onClick={() => router.push('/dashboard')}>
+            <BarChart3 className="mr-2 h-4 w-4" />
+            <span>Dashboard</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
